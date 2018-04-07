@@ -14,6 +14,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -61,7 +62,7 @@ public class Login {
 		// Top bar box
 		HBox signUpBox = new HBox(20);
 		Region r1 = new Region();
-		HBox.setHgrow(r1, Priority.ALWAYS);		
+		HBox.setHgrow(r1, Priority.ALWAYS);
 		signUpBox.getChildren().addAll(backBtn, r1, notMember, signUpBtn);
 		signUpBox.setAlignment(Pos.CENTER);
 
@@ -77,13 +78,17 @@ public class Login {
 		ImageView logo = new ImageView(new Image("file:logo.png", 150, 100, true, true));
 
 		// Username textfield
-		TextField usernameField = new TextField("Username");
+		Text username = new Text("USERNAME");
+		username.setFill(Color.WHITE);
+		TextField usernameField = new TextField();
 		usernameField.setMaxWidth(250);
 
 		// Password textfield
+		Text password = new Text("PASSWORD");
+		password.setFill(Color.WHITE);
 		PasswordField passwordField = new PasswordField();
-		passwordField.setText("Password");
 		passwordField.setMaxWidth(250);
+		passwordField.setStyle("-fx-background-color: transparent");
 
 		// Login button
 		Button loginBtn = new Button("Login");
@@ -92,10 +97,13 @@ public class Login {
 
 		// Center Box
 		VBox centerBox = new VBox(10);
-		centerBox.getChildren().addAll(logo, usernameField, passwordField, loginBtn);
+		centerBox.getChildren().addAll(logo, username, usernameField, password, passwordField, loginBtn);
 		centerBox.setAlignment(Pos.CENTER);
+		
+		//9Line line1 = new Line(centerBox.getHeight(), centerBox.getWidth());
 
 		root.setCenter(centerBox);
+
 	}
 
 }
